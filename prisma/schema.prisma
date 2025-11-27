@@ -45,10 +45,12 @@ model Client {
 }
 
 model Tech {
-  id       String    @id @default(cuid())
-  name     String    @unique
-  slug     String    @unique
-  projects Project[] @relation("ProjectTechs", references: [id])
+  id   String @id @default(cuid())
+  name String @unique
+  slug String @unique
+
+  // Relação many-to-many IMPLÍCITA — sem fields/references
+  projects Project[] @relation("ProjectTechs")
 }
 
 model Project {
@@ -57,27 +59,35 @@ model Project {
   description String?
   status      ProjectStatus @default(PLANNED)
   priority    Priority      @default(MEDIUM)
-  client      Client?       @relation(fields: [clientId], references: [id])
-  clientId    String?
-  teams       Team[]        @relation("TeamProjects")
-  techs       Tech[]        @relation("ProjectTechs")
-  tasks       Task[]
-  objectives  String?
-  roadmap     Json?
-  dueDate     DateTime?
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+
+  client   Client? @relation(fields: [clientId], references: [id])
+  clientId String?
+
+  teams Team[] @relation("TeamProjects")
+
+  // Relação many-to-many IMPLÍCITA correta
+  techs Tech[] @relation("ProjectTechs")
+
+  tasks      Task[]
+  objectives String?
+  roadmap    Json?
+  dueDate    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Task {
-  id          String   @id @default(cuid())
+  id          String  @id @default(cuid())
   title       String
   description String?
   status      String
-  order       Int      @default(0)
+  order       Int     @default(0)
   assignee    String?
-  project     Project  @relation(fields: [projectId], references: [id])
-  projectId   String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
