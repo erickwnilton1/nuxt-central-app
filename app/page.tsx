@@ -1,3 +1,10 @@
+import { Button } from "@/components/ui/button";
+
 export default function Home() {
-  return <div>Central Nuxt</div>;
+  return (
+    <div>
+      Central Nuxt
+      <Button>Click me</Button>
+    </div>
+  );
 }
