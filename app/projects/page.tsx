@@ -60,7 +60,6 @@ export default function ProjectsPage() {
       <Header />
 
       <main className="max-w-[1400px] mx-auto px-6 pt-24">
-        {/* Header */}
         <header className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
           <div>
             <h1 className="text-3xl font-bold flex items-center gap-2">
@@ -72,7 +71,6 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          {/* Filtros */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Input
               placeholder="Buscar projetos..."
@@ -109,7 +107,6 @@ export default function ProjectsPage() {
           </div>
         </header>
 
-        {/* Grid de Projetos */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <Card
@@ -150,13 +147,11 @@ export default function ProjectsPage() {
                   ))}
                 </div>
 
-                {/* Due Date */}
                 <div className="flex items-center gap-2 text-slate-300 text-sm">
                   <Calendar className="h-4 w-4 text-blue-500" />
                   Prazo: {project.dueDate}
                 </div>
 
-                {/* Botão */}
                 <div className="flex justify-end">
                   <Link href={`/projects/${project.id}`}>
                     <Button className="bg-blue-800 hover:bg-blue-900 text-white cursor-pointer">

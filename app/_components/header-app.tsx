@@ -17,7 +17,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-slate-500 text-sm">
-          <Link href="/dashboard" className="hover:text-blue-900 transition">
+          <Link href="/" className="hover:text-blue-900 transition">
             Dashboard
           </Link>
           <Link href="/teams" className="hover:text-blue-700 transition">
