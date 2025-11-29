@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { BriefcaseBusiness, CornerRightDown, Plus } from "lucide-react";
 import Header from "../_components/header-app";
 
@@ -62,20 +61,15 @@ export default function ClientsPage() {
           {clients.map((client) => (
             <Card
               key={client.id}
-              className="bg-zinc-100 transition shadow-lg hover:shadow-blue-900/10"
+              className="bg-gray-900 border-slate-800 backdrop-blur-xl shadow-lg hover:border-blue-800 transition hover:shadow-blue-800/30"
             >
               <CardHeader>
-                <div className="flex items-center gap-4">
-                  <Avatar className="h-12 w-12 border">
-                    <AvatarFallback>
-                      {client.name.slice(0, 2).toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
+                <div className="flex items-center gap-2">
                   <div>
-                    <CardTitle className="text-lg font-semibold text-black">
+                    <CardTitle className="text-xl font-semibold text-blue-300 line-clamp-2">
                       {client.name}
                     </CardTitle>
-                    <p className="text-sm text-slate-500">{client.company}</p>
+                    <p className="text-sm text-slate-400">{client.company}</p>
                   </div>
                 </div>
               </CardHeader>

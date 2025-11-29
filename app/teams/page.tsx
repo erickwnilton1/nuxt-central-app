@@ -4,7 +4,13 @@ import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Users, Plus, Rocket, CornerRightDown } from "lucide-react";
+import {
+  Plus,
+  Rocket,
+  CornerRightDown,
+  UsersRound,
+  CodeXml,
+} from "lucide-react";
 import Header from "../_components/header-app";
 
 const teams = [
@@ -37,7 +43,7 @@ export default function TeamsPage() {
         <header className="flex items-center justify-between mb-10">
           <div>
             <h1 className="text-3xl font-bold flex items-center gap-2">
-              <Rocket className="h-8 w-8 text-orange-400" /> Times
+              <Rocket className="h-8 w-8 text-blue-700" /> Times
             </h1>
             <p className="text-slate-400 flex items-center gap-2">
               Gerencie os times da Nuxt
@@ -60,18 +66,18 @@ export default function TeamsPage() {
           {teams.map((team) => (
             <Card
               key={team.id}
-              className="bg-zinc-100 shadow-lg transition hover:shadow-blue-900/10"
+              className="bg-gray-900 border-slate-800 backdrop-blur-xl shadow-lg hover:border-blue-800 transition hover:shadow-blue-800/30"
             >
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 flex items-center justify-center rounded-full bg-gray-800 text-white">
-                    <Users className="h-6 w-6" />
+                  <div className="h-12 w-12 flex items-center justify-center rounded-full bg-blue-950 text-white">
+                    <CodeXml className="h-6 w-6" />
                   </div>
                   <div>
-                    <CardTitle className="text-lg font-semibold text-black">
+                    <CardTitle className="text-xl font-semibold text-blue-300 line-clamp-2">
                       {team.name}
                     </CardTitle>
-                    <p className="text-sm text-slate-700 line-clamp-2">
+                    <p className="text-sm text-slate-400 line-clamp-2">
                       {team.description}
                     </p>
                   </div>
@@ -79,7 +85,8 @@ export default function TeamsPage() {
               </CardHeader>
 
               <CardContent className="mt-2">
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-slate-500 flex items-center gap-2">
+                  <UsersRound className="h-4 w-4" />
                   {team.members.length} membros
                 </p>
 
