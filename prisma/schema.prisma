@@ -45,11 +45,9 @@ model Client {
 }
 
 model Tech {
-  id   String @id @default(cuid())
-  name String @unique
-  slug String @unique
-
-  // Relação many-to-many IMPLÍCITA — sem fields/references
+  id       String    @id @default(cuid())
+  name     String    @unique
+  slug     String    @unique
   projects Project[] @relation("ProjectTechs")
 }
 
@@ -64,8 +62,6 @@ model Project {
   clientId String?
 
   teams Team[] @relation("TeamProjects")
-
-  // Relação many-to-many IMPLÍCITA correta
   techs Tech[] @relation("ProjectTechs")
 
   tasks      Task[]
